@@ -52,7 +52,12 @@ router.post('/login', async (req, res, next) => {
             'secret123'
         )
 
-        return res.json({ status: 'ok', user: token })
+        const objectReturn = {
+            userToken: token,
+            userDocument: user.document,
+        }
+
+        return res.json({ status: 'ok', user: objectReturn })
     } else {
         return res.json({ status: 'error', user: false })
     }
